@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * @author ：Hutinyyu
+ * @time:2020.11.17
+ *  进程调度方法
+ */
+
 public class Operating {
-    /**
-     * 进程调度方法
-     */
     public void Process(ArrayList<PCB> pcbs) {
         separation();
         System.out.println("=========================优先数调度算法处理器进程已开启=========================");
@@ -20,13 +23,16 @@ public class Operating {
         for (int i = 0; i < pcbs.size(); i++) {
             System.out.println("开始执行" + pcbs.get(i).pcbName + "进程:");
             System.out.println(pcbs.get(i));
-            //开始运算优先级-1,时间-1
+             //开始运算优先级-1,时间-3
+            // 之前时间是-1，改成-3程序报错
+            //原因：没有对time进行限制，以至于陷入死循环
+            //解决：加了if语句，对time进行限制
             if (pcbs.get(i).time >2){
                 pcbs.get(i).priority -= 1;
-                pcbs.get(i).time-=3;
+                pcbs.get(i).time-=3;//当时间>2时，时间-3
             }else{
                 pcbs.get(i).priority -= 1;
-                pcbs.get(i).time -=1;
+                pcbs.get(i).time -=1;//当1=<时间<2时，时间-1
             }
 
 //            int n =pcbs.get(i).priority - 3;
