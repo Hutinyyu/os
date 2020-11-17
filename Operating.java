@@ -35,6 +35,7 @@ public class Operating {
                 pcbs.get(i).time -=1;//当1=<时间<2时，时间-1
             }
 
+           
 //            int n =pcbs.get(i).priority - 3;
 //            pcbs.get(i).setPriority(n);
 
